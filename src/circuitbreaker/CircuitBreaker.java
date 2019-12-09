@@ -27,6 +27,9 @@ public class CircuitBreaker {
     }
 
     protected  void setState() {
+        /**
+         * TODO: replace this with token bucket so that we can make it more adaptive.
+         */
         if(failureCount > failureThreshold) {
             long diffTimeBetweenEvent = System.nanoTime() - lastFailureTime;
             if(diffTimeBetweenEvent > retryTimePeriod) {
